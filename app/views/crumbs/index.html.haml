@@ -4,6 +4,7 @@
   %thead
     %tr
       %th Number
+      %th Field Key
       %th Label
       %th Visible
       %th
@@ -14,6 +15,7 @@
     - @crumbs.each do |crumb|
       %tr
         %td= crumb.number
+        %td= crumb.field_key
         %td= crumb.label
         %td= crumb.visible
         %td= link_to 'Show', crumb

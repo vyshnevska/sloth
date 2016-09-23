@@ -53,6 +53,6 @@ class CrumbsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def crumb_params
-      params.require(:crumb).permit(:number, :label, :visible)
+      params.require(:crumb).permit(:number, :field_key, :label, :visible)
     end
 end
