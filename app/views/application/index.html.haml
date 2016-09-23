@@ -1,18 +1,6 @@
-- @crumbs.each do |crumb_data|
-  .row
-    %h4= "#{crumb_data.label} #{crumb_data.number}"
-    - # build odometer
-    .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
-
-:javascript
-  var speedInterval = 3000;
-  odometerOptions = { auto: false };
-
-  function initOdometerInstance(odometerEl){
-    var newOdometer = new Odometer({ el: odometerEl, value: 1000, theme: 'car', duration: speedInterval, animation: 'count'});
-    newOdometer.update(odometerEl.dataset.number);
-  }
-
-  for (var i = 0; i < $('.odometer').length; i++) {
-    initOdometerInstance($('.odometer')[i]);
-  }
+#crumbs_container
+  - @crumbs.each do |crumb_data|
+    .row
+      %h4= "#{crumb_data.label} #{crumb_data.number}"
+      - # build odometer
+      .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }

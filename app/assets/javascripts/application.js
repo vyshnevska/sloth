@@ -14,4 +14,13 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
-//= require_tree .
+//= require namespace
+//= require_tree ./modules
+//= require_tree ./components
+//= require_tree ./odometer
+
+$(function() {
+  if ($("#crumbs_container").length > 0){
+    new Sloth.CrumbOdometer().init();
+  }
+});
