@@ -18,6 +18,8 @@ gem 'jquery-rails'
 gem "twitter-bootstrap-rails"
 gem 'bootstrap-generators', '~> 3.3.4'
 
+gem 'i18n'
+
 group :development, :test do
   gem 'byebug'
   gem 'pry'

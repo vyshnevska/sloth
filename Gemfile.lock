@@ -179,6 +179,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   haml-rails
+  i18n
   jquery-rails
   pg
   pry
