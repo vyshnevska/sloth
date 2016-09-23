@@ -1,0 +1,19 @@
+= form_for @crumb do |f|
+  - if @crumb.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@crumb.errors.count, "error")} prohibited this crumb from being saved:"
+      %ul
+        - @crumb.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :number
+    = f.number_field :number
+  .field
+    = f.label :label
+    = f.text_area :label
+  .field
+    = f.label :visible
+    = f.check_box :visible
+  .actions
+    = f.submit 'Save'

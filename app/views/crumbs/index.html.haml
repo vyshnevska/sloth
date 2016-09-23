@@ -1,0 +1,25 @@
+%h1 Listing crumbs
+
+%table
+  %thead
+    %tr
+      %th Number
+      %th Label
+      %th Visible
+      %th
+      %th
+      %th
+
+  %tbody
+    - @crumbs.each do |crumb|
+      %tr
+        %td= crumb.number
+        %td= crumb.label
+        %td= crumb.visible
+        %td= link_to 'Show', crumb
+        %td= link_to 'Edit', edit_crumb_path(crumb)
+        %td= link_to 'Destroy', crumb, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Crumb', new_crumb_path

@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Number:
+  = @crumb.number
+%p
+  %b Label:
+  = @crumb.label
+%p
+  %b Visible:
+  = @crumb.visible
+
+= link_to 'Edit', edit_crumb_path(@crumb)
+\|
+= link_to 'Back', crumbs_path
