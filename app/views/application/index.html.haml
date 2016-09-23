@@ -6,11 +6,21 @@
 
   .col-sm-12.col-md-6
     #crumbs_container
-      - @crumbs.each do |crumb_data|
-        .row
-          %h4= "#{crumb_data.label} #{crumb_data.number}"
-          - # build odometer
-          .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
+      .crumbs_slider
+        .btn-bar
+          #buttons
+            %a{ id: 'prev', href: '#'}
+              &lt;
+            %a{ id: 'next', href: '#'}
+              &gt;
+        #slides
+          %ul
+            - @crumbs.each do |crumb_data|
+              %li.slide
+                .row
+                  %h4= "#{crumb_data.label} #{crumb_data.number}"
+                  - # build odometer
+                  .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
 
 
 /`/"==..__"=..__ _    _..-==/"/"_
