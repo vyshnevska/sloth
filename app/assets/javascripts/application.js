@@ -19,26 +19,57 @@
 //= require_tree ./components
 //= require_tree ./odometer
 
-  var odometers = [];
+//CHARACTER ODOMETER
+function renderTextOdometer(){
 
-  function tabClickInit(el){
-     odometers.forEach(function(od){
+  var elt    = $('#roller')[0];
+  var texts  = ["12345984529540210", "numbers_&_numbers", "12345678695403210", "want_more_numbers", '10101010001110111', "flocke_in_numbers"];
+
+  elt.textroller  = new TextRoller({
+    el: elt,
+    values: texts,    // an array of texts.     default : [el.innerHtml]
+    align: "left",    // right, left or middle. default : middle
+    delay: 3000,      // in milliseconds,       default : 5000
+    loop: false       // at the end, restart.   default : true
+  });
+
+  setTimeout( function(){
+    elt.textroller.render();
+  }, 1000);
+};
+
+
+// DIGITAL ODOMETERS
+var odometers = [];
+
+function tabClickInit(el){
+  setTimeout( function(){
+    odometers.forEach(function(od){
       if (od.el == $('.' + el.dataset.fieldKey)[0]) {
         od.update(od.el.dataset.number);
       } else {
         od.update(0);
-      }
-     })
-  };
+      }});
+  }, 1000);
+};
 
-
-  $(function(){
-    var list =  $('.odometer');
-    var doms = [];
-    for(var i = 0; i< list.length;i++){
-      doms.push(list[i]);
-    }
-    doms.forEach(function(odometerEl){
-      odometers.push( new Odometer({ el: odometerEl, value: 1000, theme: 'car', duration: 3000, animation: 'count'}));
-    });
+function pageStart(){
+  odometers = [];
+  var list =  $('.odometer');
+  var doms = [];
+  for(var i = 0; i< list.length;i++){
+    doms.push(list[i]);
+  }
+  doms.forEach(function(odometerEl){
+    odometers.push( new Odometer({ el: odometerEl, value: 0, theme: 'car', duration: 5000, animation: 'count'}));
   });
+}
+
+
+$(document).on('turbolinks:load', function() {
+
+  $(pageStart);
+
+  $(renderTextOdometer);
+
+});

@@ -1,18 +1,24 @@
 :css
   .tab-content .tab-pane{
     text-align: center;
-    font-size: 5em;
+    font-size: 3em;
+  }
+  .home_tab{
     padding-top: 1em;
     padding-bottom: 1em;
   }
-  // hack bootstrap
 
+  // hack bootstrap
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     border-bottom-color: transparent;
     border: 5px solid #333333;
   }
   .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
     border-bottom-color: transparent;
+  }
+  .number_description {
+    margin: .5em 0 .25em;
+    color: #666;
   }
 
 
@@ -33,14 +39,17 @@
 
 
       .tab-content
-        #home.active.tab-pane.fade.in
-          %h4= "Hey Flocke!"
+        #home{ class: 'active tab-pane fade in'}
+          .home_tab
+            #roller.textroller
+
 
         - @crumbs.each_with_index do |crumb_data, index|
           %div{ id: crumb_data.field_key, class: 'tab-pane fade' }
-            %h2= crumb_data.label
-            %h4= "#{crumb_data.label} #{crumb_data.number}"
-            - # build odometer
+            .number_description
+              = crumb_data.label
+            %br
+            - # odometer
             .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
 
 
