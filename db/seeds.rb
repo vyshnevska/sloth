@@ -6,6 +6,6 @@ print '.' if Crumb.create(field_key: 'first_commit', number: 1, label: 'First co
 
 working_days = (Date.parse('2016-09-23') - Date.parse('2015-06-30')).to_i
 
-print '.' if Crumb.create(field_key: 'working_time', visible: true, visual_options: { has_nested: true, nested_key: 'working_time' })
+print '.' if Crumb.create(field_key: 'working_time', number: 0, label: 'Work at Makerist', visible: true, visual_options: { has_nested: true })
 print '.' if Crumb.create(field_key: 'working_hours', number: working_days*8, label: 'Hours at Makerist', visible: true, visual_options: { has_nested: true, master_key: 'working_time' })
 print '.' if Crumb.create(field_key: 'working_days', number: working_days, label: 'Days at Makerist', visible: true, visual_options: { has_nested: true,  master_key: 'working_time' })

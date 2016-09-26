@@ -45,11 +45,24 @@ var odometers = [];
 function tabClickInit(el){
   setTimeout( function(){
     odometers.forEach(function(od){
-      if (od.el == $('.' + el.dataset.fieldKey)[0]) {
-        od.update(od.el.dataset.number);
+      if (od.el.className.includes('working_hours') || od.el.className.includes('working_days')){
+        var fieldKeys = el.dataset.fieldKey.split(',');
+
+        if (fieldKeys.length > 1){
+          fieldKeys.forEach(function(nestedOd){
+            if (od.el == $('.' + nestedOd)[0]) {
+              od.update(od.el.dataset.number);
+            }
+          });
+        }
       } else {
-        od.update(0);
-      }});
+        if (od.el == $('.' + el.dataset.fieldKey)[0]) {
+          od.update(od.el.dataset.number);
+        } else {
+          od.update(0);
+        }
+      }
+    });
   }, 1000);
 };
 

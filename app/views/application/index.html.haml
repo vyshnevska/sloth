@@ -1,27 +1,3 @@
-:css
-  .tab-content .tab-pane{
-    text-align: center;
-    font-size: 3em;
-  }
-  .home_tab{
-    padding-top: 1em;
-    padding-bottom: 1em;
-  }
-
-  // hack bootstrap
-  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    border-bottom-color: transparent;
-    border: 5px solid #333333;
-  }
-  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-    border-bottom-color: transparent;
-  }
-  .number_description {
-    margin: .5em 0 .25em;
-    color: #666;
-  }
-
-
 .row
   .col-sm-12.col-md-4
     %ul.slothy
@@ -33,9 +9,10 @@
       %ul.nav.nav-tabs
         %li.active
           %a{ href: '#home', 'data-toggle' => "tab" }= 'Home'
-        - @crumbs.each_with_index do |crumb_data, index|
+        - (@odometer_crumbs + @text_crumbs).each_with_index do |crumb_data, index|
           %li
-            %a{ href: "##{crumb_data.field_key}", 'data-toggle' => "tab", 'data-field-key' => crumb_data.field_key, onclick: "tabClickInit(this);" }= index+1
+            - data =  crumb_data.nested_elements.any? ? crumb_data.nested_elements.map(&:field_key).join(',') : crumb_data.field_key
+            %a{ href: "##{crumb_data.field_key}", 'data-toggle' => "tab", 'data-field-key' => data, onclick: "tabClickInit(this);" }= index+1
 
 
       .tab-content
@@ -43,14 +20,26 @@
           .home_tab
             #roller.textroller
 
-
-        - @crumbs.each_with_index do |crumb_data, index|
+        - @odometer_crumbs.each do |crumb_data|
           %div{ id: crumb_data.field_key, class: 'tab-pane fade' }
-            .number_description
-              = crumb_data.label
-            %br
-            - # odometer
-            .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
+            - if crumb_data.nested_elements.any? # build nested elements on the same tab
+              - crumb_data.nested_elements.each do |nested_crumb|
+                .number_description
+                  = nested_crumb.label
+                - # odometer
+                .odometer.odometer-theme-car{ class: nested_crumb.field_key, data: { theme: "car", number: nested_crumb.number } }
+            - else
+              .number_description
+                = crumb_data.label
+              - # odometer
+              .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
+
+          - # tab w/o odometer
+          -  @text_crumbs.each do |text_crumb_data|
+            %div{ id: text_crumb_data.field_key, class: 'tab-pane fade' }
+              .number_description
+                = text_crumb_data.label
+
 
 
 /`/"==..__"=..__ _    _..-==/"/"_

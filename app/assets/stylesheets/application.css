@@ -14,12 +14,36 @@
  *= require_self
  */
 
-
  .slothy {
   list-style: none;
   font-size: 15px;
   font-family: monospace;
   line-height: 18px;
+}
+
+
+/* home tabs */
+
+.tab-content .tab-pane{
+  text-align: center;
+  font-size: 3em;
+}
+.home_tab{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+// hack bootstrap
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border-bottom-color: transparent;
+  border: 5px solid #333333;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+  border-bottom-color: transparent;
+}
+.number_description {
+  margin: .5em 0 .25em;
+  color: #666;
 }
 
 /* Slider */

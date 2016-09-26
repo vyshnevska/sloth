@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def index
-    @crumbs = Crumb.visible.where('number > 1')
+    @odometer_crumbs = Crumb.visible.select{ |c| c.visual_options["odometer"]!= 'false' }.select{|c| !c.visual_options.has_key?('master_key') }
+    @text_crumbs     = Crumb.visible.select{ |c| c.visual_options["odometer"] == 'false' }
   end
 end
