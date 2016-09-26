@@ -1,26 +1,47 @@
+:css
+  .tab-content .tab-pane{
+    text-align: center;
+    font-size: 5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+  }
+  // hack bootstrap
+
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border-bottom-color: transparent;
+    border: 5px solid #333333;
+  }
+  .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    border-bottom-color: transparent;
+  }
+
+
 .row
-  .col-sm-12.col-md-6
+  .col-sm-12.col-md-4
     %ul.slothy
       - (1..12).each do |i|
         %li= I18n.t("sloth.img_line#{i}").html_safe
 
-  .col-sm-12.col-md-6
+  .col-sm-12.col-md-8
     #crumbs_container
-      .crumbs_slider
-        .btn-bar
-          #buttons
-            %a{ id: 'prev', href: '#'}
-              &lt;
-            %a{ id: 'next', href: '#'}
-              &gt;
-        #slides
-          %ul
-            - @crumbs.each do |crumb_data|
-              %li.slide
-                .row
-                  %h4= "#{crumb_data.label} #{crumb_data.number}"
-                  - # build odometer
-                  .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
+      %ul.nav.nav-tabs
+        %li.active
+          %a{ href: '#home', 'data-toggle' => "tab" }= 'Home'
+        - @crumbs.each_with_index do |crumb_data, index|
+          %li
+            %a{ href: "##{crumb_data.field_key}", 'data-toggle' => "tab", 'data-field-key' => crumb_data.field_key, onclick: "tabClickInit(this);" }= index+1
+
+
+      .tab-content
+        #home.active.tab-pane.fade.in
+          %h4= "Hey Flocke!"
+
+        - @crumbs.each_with_index do |crumb_data, index|
+          %div{ id: crumb_data.field_key, class: 'tab-pane fade' }
+            %h2= crumb_data.label
+            %h4= "#{crumb_data.label} #{crumb_data.number}"
+            - # build odometer
+            .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
 
 
 /`/"==..__"=..__ _    _..-==/"/"_
