@@ -9,5 +9,7 @@ Bundler.require(*Rails.groups)
 module Sloth
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
+    config.http_auth = ActiveSupport::OrderedOptions.new
+    config.http_auth.require_authentication = false
   end
 end
