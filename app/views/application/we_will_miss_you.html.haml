@@ -1,65 +1,70 @@
-.row
-  %h3= "We will miss you 'cause you are the one who..."
-  .col-sm-12.col-md-12
-    %div{ id: "carousel-example-generic", class: "carousel slide", 'data-ride' => "carousel", 'data-interval' => '3000' }
-      - # Indicators
-      %ol.carousel-indicators
-        %li{ class: "active", 'data-target' => "#carousel-example-generic", 'data-slide-to' => "0" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "1" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "2" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "3" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "4" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "5" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "6" }
-        %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "7" }
+.will_miss_you_container
+  .row
+    %h3= "We will miss you 'cause you are the one who..."
+    .col-sm-12.col-md-12
+      %div{ id: "carousel-example-generic", class: "carousel slide", 'data-ride' => "carousel", 'data-interval' => '3000' }
+        - # Indicators
+        %ol.carousel-indicators
+          %li{ class: "active", 'data-target' => "#carousel-example-generic", 'data-slide-to' => "0" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "1" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "2" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "3" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "4" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "5" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "6" }
+          %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "7" }
 
-      - # Wrapper for slides
-      %div{ class: "carousel-inner" }
-        - %w(connect math fix hack install code users bugs).each_with_index do |image_prefix, index|
-          %div.item{ class: index ==0 ? "active" : '' }
-            = image_tag "#{image_prefix}_things.jpg", class: 'carousel_image'
+        - # Wrapper for slides
+        %div{ class: "carousel-inner" }
+          - %w(connect math fix hack install code users bugs).each_with_index do |image_prefix, index|
+            %div.item{ class: index ==0 ? "active" : '' }
+              = image_tag "#{image_prefix}_things.jpg", class: 'carousel_image'
 
-.clearfix
-.row.with-top-margin
-  .col-sm-12.col-md-4
-    %h4= 'Add more drama...'
-    = link_to '#', { 'data-toggle' => "modal", 'data-target' => "#moreDrama" } do
-      = image_tag('push-to-add-drama.png', class: 'drama_button')
+  .clearfix
+  .row.with-top-margin
+    .col-sm-12.col-md-4
+      %h4= 'Add more drama...'
+      = link_to '#', { 'data-toggle' => "modal", 'data-target' => "#moreDrama" } do
+        = image_tag('push-to-add-drama.png', class: 'drama_button')
 
-    %div{ class: "modal fade", id: "moreDrama", tabindex: "-1", role: "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" }
-      %div{ class: "modal-dialog", role: "document" }
-        .modal-content
-          .modal-body
-            %div{ style: 'text-align:center;'}
-              %h4= "We won't forget your:"
-              = image_tag "dont_care.jpg", class: 'drama_container'
+      %div{ class: "modal fade", id: "moreDrama", tabindex: "-1", role: "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" }
+        %div{ class: "modal-dialog", role: "document" }
+          .modal-content
+            .modal-body
+              %div{ style: 'text-align:center;'}
+                %h4= "We won't forget your:"
+                = image_tag "dont_care.jpg", class: 'drama_container'
 
-  .col-sm-12.col-md-4
-    %h4= '...add even more drama...'
-    = link_to '#', { 'data-toggle' => "modal", 'data-target' => "#evenMoreDrama" } do
-      = image_tag('push-to-add-drama.png', class: 'drama_button')
+    .col-sm-12.col-md-4
+      %h4= '...add even more drama...'
+      = link_to '#', { 'data-toggle' => "modal", 'data-target' => "#evenMoreDrama" } do
+        = image_tag('push-to-add-drama.png', class: 'drama_button')
 
-    %div{ class: "modal fade", id: "evenMoreDrama", tabindex: "-1", role: "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" }
-      %div{ class: "modal-dialog", role: "document" }
-        .modal-content
-          .modal-body
-            %div{ style: 'text-align:center;'}
-              = image_tag "sad_unicorn.gif", class: 'drama_unicorn'
+      %div{ class: "modal fade", id: "evenMoreDrama", tabindex: "-1", role: "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" }
+        %div{ class: "modal-dialog", role: "document" }
+          .modal-content
+            .modal-body
+              %div{ style: 'text-align:center;'}
+                = image_tag "sad_unicorn.gif", class: 'drama_unicorn'
 
-  .col-sm-12.col-md-4
-    %h4= '...even more drama?..'
-    = link_to '#', { 'data-toggle' => "modal", 'data-target' => "#noDrama" } do
-      = image_tag('push-to-add-drama.png', class: 'drama_button')
+    .col-sm-12.col-md-4
+      %h4= '...even more drama?..'
+      = link_to '#', { 'data-toggle' => "modal", 'data-target' => "#noDrama" } do
+        = image_tag('push-to-add-drama.png', class: 'drama_button')
 
-    %div{ class: "modal fade", id: "noDrama", tabindex: "-1", role: "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" }
-      %div{ class: "modal-dialog", role: "document" }
-        .modal-content
-          .modal-body
-            %div{ style: 'text-align:center;'}
-              %blockquote
-                %p= "Everything will be okay in the end. If it's not okay, it's not the end."
-                %footer= 'John Lennon'
-              = image_tag "sid_ok.jpg"
-            %h3= "So see you at makerist parties!"
-            %div.with-top-margin{ style: 'text-align:center;'}
-              = image_tag "party_things.gif"
+      %div{ class: "modal fade", id: "noDrama", tabindex: "-1", role: "dialog", 'aria-labelledby' => "myModalLabel", 'aria-hidden' => "true" }
+        %div{ class: "modal-dialog", role: "document" }
+          .modal-content
+            .modal-body
+              %div{ style: 'text-align:center;'}
+                %blockquote
+                  %p= "Everything will be okay in the end. If it's not okay, it's not the end."
+                  %footer= 'John Lennon'
+                = image_tag "sid_ok.jpg"
+              %h3= "So see you at makerist parties!"
+              %div.with-top-margin{ style: 'text-align:center;'}
+                = image_tag "party_things.gif"
+:javascript
+  function JSFX_StartEffects(){
+    JSFX.MakeSpring (10, "<img src='butterfly.gif'>");
+  }

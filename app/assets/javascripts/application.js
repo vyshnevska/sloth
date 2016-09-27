@@ -18,6 +18,7 @@
 //= require_tree ./modules
 //= require_tree ./components
 //= require_tree ./odometer
+//= require_tree ./butterflies
 
 //CHARACTER ODOMETER
 function renderTextOdometer(){
@@ -73,11 +74,11 @@ function pageStart(){
   for(var i = 0; i< list.length;i++){
     doms.push(list[i]);
   }
+
   doms.forEach(function(odometerEl){
     odometers.push( new Odometer({ el: odometerEl, value: 0, theme: 'car', duration: 5000, animation: 'count'}));
   });
 }
-
 
 $(document).on('turbolinks:load', function() {
 
@@ -85,6 +86,10 @@ $(document).on('turbolinks:load', function() {
 
   if ($('#roller').length > 0) {
     $(renderTextOdometer);
+  }
+
+  if ($('.will_miss_you_container').length > 0){
+    JSFX_StartEffects();
   }
 
   setTimeout( function(){
