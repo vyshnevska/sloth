@@ -11,8 +11,14 @@
           %a{ href: '#home', 'data-toggle' => "tab" }= 'Home'
         - (@odometer_crumbs + @text_crumbs).each_with_index do |crumb_data, index|
           %li
-            - data =  crumb_data.nested_elements.any? ? crumb_data.nested_elements.map(&:field_key).join(',') : crumb_data.field_key
+            - data = crumb_data.nested_elements.any? ? crumb_data.nested_elements.map(&:field_key).join(',') : crumb_data.field_key
             %a{ href: "##{crumb_data.field_key}", 'data-toggle' => "tab", 'data-field-key' => data, onclick: "tabClickInit(this);" }= index+1
+        %li
+          %a{ href: '#bought_stuff', 'data-toggle' => "tab" }= '100200'
+        %li
+          %a{ href: '#faked_users', 'data-toggle' => "tab" }= '100300'
+        %li
+          %a{ href: '#faked_personalities', 'data-toggle' => "tab" }= '100400'
         %li
           %a{ href: '#drama_btn', 'data-toggle' => "tab" }= '100500'
 
@@ -36,15 +42,35 @@
               - # odometer
               .odometer.odometer-theme-car{ class: crumb_data.field_key, data: { theme: "car", number: crumb_data.number } }
 
-          - # tab w/o odometer
-          -  @text_crumbs.each do |text_crumb_data|
-            %div{ id: text_crumb_data.field_key, class: 'tab-pane fade' }
-              .number_description
-                = text_crumb_data.label
-          #drama_btn{ class: 'tab-pane fade'}
-            .drama_container
-              = image_tag 'unicorn.gif', class: 'unicorn_image'
-              = link_to(image_tag('push-to-add-drama.png', class: 'drama_button'), we_will_miss_you_path)
+        - # tab w/o odometer
+        - @text_crumbs.each do |text_crumb_data|
+          %div{ id: text_crumb_data.field_key, class: 'tab-pane fade' }
+            .number_description
+              = text_crumb_data.label
+
+        #bought_stuff{ class: 'tab-pane fade' }
+          %h4= "Bought items on Makerist"
+          .images_conteiner
+            = image_tag "pattern_1.jpg", class: 'normal_image'
+            = image_tag "pattern_2.jpg", class: 'normal_image'
+
+        #faked_users{ class: 'tab-pane fade' }
+          %h4= "Faked User Accounts on Makerist"
+          .images_conteiner
+            %ul{style: 'list-style: none;'}
+              - ['Florian Eck', 'Harry Hirsch', 'Hokus Pokus', 'Chuck Testa', 'Gooby Plz'].each do |fake|
+                %li= fake
+
+        #faked_personalities{ class: 'tab-pane fade' }
+          %h4= "Faked Personalities"
+          .images_conteiner
+            = image_tag "flo_1.jpg", class: 'normal_image'
+            = image_tag "flo_2.jpg", class: 'normal_image'
+
+        #drama_btn{ class: 'tab-pane fade' }
+          .drama_container
+            = image_tag 'unicorn.gif', class: 'unicorn_image'
+            = link_to(image_tag('push-to-add-drama.png', class: 'drama_button'), we_will_miss_you_path)
 
 
 

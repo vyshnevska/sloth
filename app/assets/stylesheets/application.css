@@ -31,6 +31,12 @@
   width: 390px;
 }
 
+.normal_image {
+  height: 400px;
+  width: 250px;
+  display: inline;
+  margin-left: 10px;
+}
 .drama_container {
   height: 300px;
   width: 300px;

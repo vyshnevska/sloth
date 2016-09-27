@@ -12,6 +12,10 @@
 %p
   %b Visible:
   = @crumb.visible
+%p
+  %b Visual Options:
+  = @crumb.visual_options.inspect
+
 
 = link_to 'Edit', edit_crumb_path(@crumb)
 \|
