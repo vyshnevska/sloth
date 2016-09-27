@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
   before_filter :authenticate
 
   def index
-    @odometer_crumbs = Crumb.visible.select{ |c| c.visual_options["odometer"]!= 'false' }.select{|c| !c.visual_options.has_key?('master_key') }
-    @text_crumbs     = Crumb.visible.select{ |c| c.visual_options["odometer"] == 'false' }
+    @odometer_crumbs = Crumb.visible.select{ |c| (c.visual_options.nil? || c.visual_options["odometer"]!= 'false') }.select{|c| c.visual_options.nil? || !c.visual_options.has_key?('master_key') }
+    @text_crumbs     = Crumb.visible.select{ |c| (c.visual_options.nil? || c.visual_options["odometer"] == 'false') }
   end
 
   def we_will_miss_you
