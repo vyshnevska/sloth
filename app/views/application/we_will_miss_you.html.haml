@@ -3,6 +3,13 @@
     %h3= "We will miss you 'cause you are the one who..."
     .col-sm-12.col-md-12
       %div{ id: "carousel-example-generic", class: "carousel slide", 'data-ride' => "carousel", 'data-interval' => '3000' }
+
+        - # Wrapper for slides
+        %div{ class: "carousel-inner" }
+          - %w(connect math fix hack install code users bugs).each_with_index do |image_prefix, index|
+            %div.item{ class: index ==0 ? "active" : '' }
+              = image_tag "#{image_prefix}_things.jpg", class: 'carousel_image'
+
         - # Indicators
         %ol.carousel-indicators
           %li{ class: "active", 'data-target' => "#carousel-example-generic", 'data-slide-to' => "0" }
@@ -13,12 +20,6 @@
           %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "5" }
           %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "6" }
           %li{ 'data-target' => "#carousel-example-generic", 'data-slide-to' => "7" }
-
-        - # Wrapper for slides
-        %div{ class: "carousel-inner" }
-          - %w(connect math fix hack install code users bugs).each_with_index do |image_prefix, index|
-            %div.item{ class: index ==0 ? "active" : '' }
-              = image_tag "#{image_prefix}_things.jpg", class: 'carousel_image'
 
   .clearfix
   .row.with-top-margin

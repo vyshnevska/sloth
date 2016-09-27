@@ -1,8 +1,11 @@
 .row
   .col-sm-12.col-md-4
-    %ul.slothy
-      - (1..12).each do |i|
-        %li= I18n.t("sloth.img_line#{i}").html_safe
+    .main_image_conteiner
+      = image_tag 'empire_strikes_eck.jpg'
+
+    / %ul.slothy
+    /   - (1..12).each do |i|
+    /     %li= I18n.t("sloth.img_line#{i}").html_safe
 
   .col-sm-12.col-md-8
     #crumbs_container
@@ -68,7 +71,7 @@
             = image_tag "flo_2.jpg", class: 'normal_image'
 
         #drama_btn{ class: 'tab-pane fade' }
-          .drama_container
+          %div.with-top-small-margin
             = image_tag 'unicorn.gif', class: 'unicorn_image'
             = link_to(image_tag('push-to-add-drama.png', class: 'drama_button'), we_will_miss_you_path)
 
