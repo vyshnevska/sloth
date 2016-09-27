@@ -83,6 +83,14 @@ $(document).on('turbolinks:load', function() {
 
   $(pageStart);
 
-  $(renderTextOdometer);
+  if ($('#roller').length > 0) {
+    $(renderTextOdometer);
+  }
+
+  $('[data-ride="carousel"]').each(function () {
+    var $carousel = $(this)
+    $carousel.carousel($carousel.data())
+  })
+
 
 });

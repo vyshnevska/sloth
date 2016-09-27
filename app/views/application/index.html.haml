@@ -13,6 +13,8 @@
           %li
             - data =  crumb_data.nested_elements.any? ? crumb_data.nested_elements.map(&:field_key).join(',') : crumb_data.field_key
             %a{ href: "##{crumb_data.field_key}", 'data-toggle' => "tab", 'data-field-key' => data, onclick: "tabClickInit(this);" }= index+1
+        %li
+          %a{ href: '#drama_btn', 'data-toggle' => "tab" }= '100500'
 
 
       .tab-content
@@ -39,6 +41,10 @@
             %div{ id: text_crumb_data.field_key, class: 'tab-pane fade' }
               .number_description
                 = text_crumb_data.label
+          #drama_btn{ class: 'tab-pane fade'}
+            .drama_container
+              = image_tag 'unicorn.gif', class: 'unicorn_image'
+              = link_to(image_tag('push-to-add-drama.png', class: 'drama_button'), we_will_miss_you_path)
 
 
 

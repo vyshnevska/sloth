@@ -21,6 +21,25 @@
   line-height: 18px;
 }
 
+.drama_button {
+  width: 160px;
+  height: 160px;
+}
+
+.drama_container {
+  height: 300px;
+  width: 300px;
+}
+.unicorn_image {
+  height: 150px;
+  width: 150px;
+}
+.carousel_image {
+  height: 350px;
+  width: 350px;
+}
+.carousel { width : 1000px; }
+.item img { margin: 0 40%; }
 
 /* home tabs */
 

@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     @text_crumbs     = Crumb.visible.select{ |c| c.visual_options["odometer"] == 'false' }
   end
 
+  def we_will_miss_you
+
+  end
+
   protected
 
   def authenticate
