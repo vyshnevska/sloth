@@ -65,6 +65,8 @@
               %div.with-top-margin{ style: 'text-align:center;'}
                 = image_tag "party_things.gif"
 :javascript
+  window.img_url = "#{ asset_path('butterfly.gif') }";
+
   function JSFX_StartEffects(){
-    JSFX.MakeSpring (10, "<img src='butterfly.gif'>");
+    JSFX.MakeSpring (10, "<img src="+ window.img_url +">");
   }
