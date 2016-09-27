@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+ .with-top-margin { margin-top: 5em; }
 
  .slothy {
   list-style: none;
@@ -24,6 +25,10 @@
 .drama_button {
   width: 160px;
   height: 160px;
+}
+.drama_unicorn {
+  height: 490px;
+  width: 390px;
 }
 
 .drama_container {

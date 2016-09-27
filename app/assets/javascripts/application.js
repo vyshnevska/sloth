@@ -87,10 +87,10 @@ $(document).on('turbolinks:load', function() {
     $(renderTextOdometer);
   }
 
-  $('[data-ride="carousel"]').each(function () {
-    var $carousel = $(this)
-    $carousel.carousel($carousel.data())
-  })
-
+  setTimeout( function(){
+    $('[data-ride="carousel"]').each(function () {
+      var $carousel = $(this)
+      $carousel.carousel($carousel.data())
+    })}, 2000);
 
 });
